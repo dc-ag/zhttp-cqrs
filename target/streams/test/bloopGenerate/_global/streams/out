@@ -1,0 +1,4 @@
+[debug] [zhttp-cqrs-test] Classpath dependencies List()
+[debug] [zhttp-cqrs-test] Dependencies from configurations List(zhttp-cqrs)
+[debug] Bloop wrote the configuration of project 'zhttp-cqrs-test' to '/home/bauer/workspace/scala/zhttp-cqrs/.bloop/zhttp-cqrs-test.json'
+[success] Generated .bloop/zhttp-cqrs-test.json

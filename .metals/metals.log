@@ -1,0 +1,86 @@
+2022.06.29 14:45:16 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/bauer/workspace/scala/zhttp-cqrs/.metals/lsp.trace.json or /home/bauer/.cache/metals/lsp.trace.json[0m
+2022.06.29 14:45:16 INFO  logging to file /home/bauer/workspace/scala/zhttp-cqrs/.metals/metals.log[0m
+2022.06.29 14:45:16 INFO  Started: Metals version 0.11.6+142-ad4708c1-SNAPSHOT in workspace '/home/bauer/workspace/scala/zhttp-cqrs' for client Visual Studio Code 1.68.1.[0m
+2022.06.29 14:45:17 INFO  time: initialize in 0.78s[0m
+2022.06.29 14:45:17 WARN  Flyway upgrade recommended: H2 2.1.214 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.[0m
+2022.06.29 14:45:17 WARN  Build server is not auto-connectable.[0m
+2022.06.29 14:45:42 INFO  skipping build import with status 'Dismissed'[0m
+2022.06.29 14:45:44 INFO  skipping build import with status 'Dismissed'[0m
+2022.06.29 14:47:00 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp-cqrs/CQRS.scala[0m
+2022.06.29 14:47:03 INFO  no build target found for /home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp-cqrs/CQRS.scala. Using presentation compiler with project's scala-library version: 3.1.3[0m
+2022.06.29 14:47:05 INFO  time: code lens generation in 4.65s[0m
+2022.06.29 14:47:17 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp-cqrs/CQRS.scala[0m
+2022.06.29 14:47:39 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala[0m
+2022.06.29 14:47:42 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/build.sbt[0m
+2022.06.29 14:47:47 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/build.sbt[0m
+2022.06.29 14:48:30 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/build.sbt[0m
+2022.06.29 14:48:33 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala[0m
+2022.06.29 14:48:35 INFO  running '/home/bauer/.sdkman/candidates/java/current/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar /tmp/metals1185089459847415727/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'[0m
+2022.06.29 14:48:35 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/project/metals.sbt[0m
+2022.06.29 14:48:36 WARN  no build target for: /home/bauer/workspace/scala/zhttp-cqrs/project/project/metals.sbt[0m
+2022.06.29 14:48:36 INFO  skipping build import with status 'Dismissed'[0m
+2022.06.29 14:48:37 INFO  [info] welcome to sbt 1.6.2 (GraalVM Community Java 17.0.3)[0m
+2022.06.29 14:48:39 INFO  [info] loading global plugins from /home/bauer/.sbt/1.0/plugins[0m
+2022.06.29 14:48:43 INFO  [info] loading settings for project zhttp-cqrs-build-build from metals.sbt ...[0m
+2022.06.29 14:48:43 INFO  [info] loading project definition from /home/bauer/workspace/scala/zhttp-cqrs/project/project[0m
+2022.06.29 14:48:45 INFO  [info] loading settings for project zhttp-cqrs-build from metals.sbt ...[0m
+2022.06.29 14:48:45 INFO  [info] loading project definition from /home/bauer/workspace/scala/zhttp-cqrs/project[0m
+2022.06.29 14:48:49 INFO  [success] Generated .bloop/zhttp-cqrs-build.json[0m
+2022.06.29 14:48:49 INFO  [success] Total time: 3 s, completed Jun 29, 2022, 2:48:49 PM[0m
+2022.06.29 14:48:51 INFO  [info] loading settings for project zhttp-cqrs from build.sbt ...[0m
+2022.06.29 14:48:51 INFO  [info] set current project to zhttp_cqrs (in build file:/home/bauer/workspace/scala/zhttp-cqrs/)[0m
+2022.06.29 14:48:53 INFO  [success] Generated .bloop/zhttp-cqrs.json[0m
+2022.06.29 14:48:53 INFO  [success] Generated .bloop/zhttp-cqrs-test.json[0m
+2022.06.29 14:48:53 INFO  [success] Total time: 1 s, completed Jun 29, 2022, 2:48:53 PM[0m
+2022.06.29 14:48:53 INFO  time: ran 'sbt bloopInstall' in 17s[0m
+2022.06.29 14:48:53 INFO  Attempting to connect to the build server...[0m
+2022.06.29 14:48:53 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/bauer/workspace/scala/zhttp-cqrs/.metals/bsp.trace.json or /home/bauer/.cache/metals/bsp.trace.json[0m
+2022.06.29 14:48:53 INFO  Attempting to connect to the build server...[0m
+2022.06.29 14:48:53 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/bauer/workspace/scala/zhttp-cqrs/project/.metals/bsp.trace.json or /home/bauer/.cache/metals/bsp.trace.json[0m
+2022.06.29 14:48:53 INFO  time: Connected to build server in 0.39s[0m
+2022.06.29 14:48:53 INFO  Connected to Build server: Bloop v1.5.0-22-91111c15[0m
+2022.06.29 14:49:00 INFO  time: indexed workspace in 7.03s[0m
+2022.06.29 14:49:06 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:49:08 INFO  time: compiled zhttp-cqrs in 2.16s[0m
+2022.06.29 14:49:15 ERROR code navigation does not work for the file '/home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala' because the SemanticDB file '/home/bauer/workspace/scala/zhttp-cqrs/.bloop/zhttp-cqrs/bloop-bsp-clients-classes/classes-Metals-0B7zphWqShyPM4dpDAboMg==/META-INF/semanticdb/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala.semanticdb' doesn't exist. There can be many reasons for this error. [0m
+2022.06.29 14:49:15 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:49:18 INFO  time: compiled zhttp-cqrs in 2.46s[0m
+Jun 29, 2022 2:49:28 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 160
+2022.06.29 14:50:42 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:50:44 INFO  time: compiled zhttp-cqrs in 1.46s[0m
+2022.06.29 14:50:52 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:50:53 INFO  time: compiled zhttp-cqrs in 1.52s[0m
+2022.06.29 14:51:06 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:51:07 INFO  time: compiled zhttp-cqrs in 1.41s[0m
+2022.06.29 14:51:45 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:51:46 INFO  time: compiled zhttp-cqrs in 1.59s[0m
+2022.06.29 14:51:53 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:51:54 INFO  time: compiled zhttp-cqrs in 1.06s[0m
+2022.06.29 14:53:01 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:53:01 INFO  time: compiled zhttp-cqrs in 0.29s[0m
+2022.06.29 14:53:12 ERROR code navigation does not work for the file '/home/bauer/workspace/scala/zhttp-cqrs/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala' because the SemanticDB file '/home/bauer/workspace/scala/zhttp-cqrs/.bloop/zhttp-cqrs/bloop-bsp-clients-classes/classes-Metals-0B7zphWqShyPM4dpDAboMg==/META-INF/semanticdb/src/main/scala/ag/dc/zhttp_cqrs/CQRS.scala.semanticdb' doesn't exist. There can be many reasons for this error. [0m
+Jun 29, 2022 2:53:27 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 616
+2022.06.29 14:53:45 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:53:45 INFO  time: compiled zhttp-cqrs in 0.36s[0m
+2022.06.29 14:54:06 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:54:06 INFO  time: compiled zhttp-cqrs in 0.86s[0m
+2022.06.29 14:54:48 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:54:48 INFO  time: compiled zhttp-cqrs in 0.33s[0m
+2022.06.29 14:54:52 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:54:52 INFO  time: compiled zhttp-cqrs in 0.91s[0m
+2022.06.29 14:55:38 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:55:38 INFO  time: compiled zhttp-cqrs in 0.99s[0m
+2022.06.29 14:55:51 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:55:52 INFO  time: compiled zhttp-cqrs in 1.15s[0m
+2022.06.29 14:56:26 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:56:27 INFO  time: compiled zhttp-cqrs in 1.03s[0m
+2022.06.29 14:56:31 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:56:31 INFO  time: compiled zhttp-cqrs in 0.97s[0m
+2022.06.29 14:56:36 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:56:37 INFO  time: compiled zhttp-cqrs in 1.01s[0m
+2022.06.29 14:56:46 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:56:46 INFO  time: compiled zhttp-cqrs in 0.79s[0m
+2022.06.29 14:57:17 INFO  compiling zhttp-cqrs (1 scala source)[0m
+2022.06.29 14:57:17 INFO  time: compiled zhttp-cqrs in 0.92s[0m
