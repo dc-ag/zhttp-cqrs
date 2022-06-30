@@ -23,6 +23,7 @@ type AggregateIdType = UUID | Int
 
 type AggregateState = "Open" | "Closed"
 
+
 enum CommonHeaders(name: String):
   def getName = this.name
   case CorrelationId extends CommonHeaders("X-Correlation-Id")
@@ -212,19 +213,16 @@ trait IncomingHTTPMessageDispatcher[R <: Serializable](
     protected val queryHandlers: List[QueryHandler[?, R]],
     protected val commandHandlers: List[CommandHandler[?, R]],
     protected val defaultNotFound: R,
-    protected val reqErrorToR: RequestError => R = (r: RequestError) =>
-      r.toResponse()
+    protected val reqErrorToR: RequestError => R
 ):
   def handles(
       message: Query[?, ?] | Command[?, ?]
-  )(using logger: Logger): Boolean =
+  ): Boolean =
     message match {
       case q: Query[?, ?]   => queryHandlers.exists(_.handles(q))
       case c: Command[?, ?] => commandHandlers.exists(_.handles(c))
     }
-  def dispatchZIO(message: Query[?, ?] | Command[?, ?])(using
-      logger: Logger
-  ): ZIO[Any, Throwable, R] =
+  def dispatchZIO(message: Query[?, ?] | Command[?, ?]): ZIO[Any, Throwable, R] =
     Console.println(
       s"Dispatching message of type ${message.getClass.getSimpleName()}."
     )
@@ -245,27 +243,29 @@ trait IncomingHTTPMessageDispatcher[R <: Serializable](
       }
       case None => {
         Console.println(
-          s"No handler found for message with UUID ${message.messageId
-              .toString()} and correlation-Id ${message.correlationId.toString()}. Proceeding with default not found handling."
+          s"No handler found for message with UUID ${message.messageId.toString()} " +
+          s"and correlation-Id ${message.correlationId.toString()}. " +
+          "Proceeding with default not found handling."
         )
         ZIO.succeed(defaultNotFound)
       }
     }
 
 class GenericIncomingHTTPMessageDispatcher(
-    queryHandlers: List[QueryHandler[?, Response]] = List(),
-    commandHandlers: List[CommandHandler[?, Response]] = List(),
-    defaultNotFound: Response = Response.status(Status.NotFound),
-    reqErrorToR: RequestError => Response = (r: RequestError) => r.toResponse()
-)(using logger: Logger)
-    extends IncomingHTTPMessageDispatcher[Response](
-      queryHandlers,
-      commandHandlers,
-      defaultNotFound
-    ):
+  queryHandlers: List[QueryHandler[?, Response]] = List(),
+  commandHandlers: List[CommandHandler[?, Response]] = List(),
+  defaultNotFound: Response = Response.status(Status.NotFound),
+  reqErrorToR: RequestError => Response = (r: RequestError) => r.toResponse()
+)
+  extends IncomingHTTPMessageDispatcher[Response](
+    queryHandlers,
+    commandHandlers,
+    defaultNotFound,
+    reqErrorToR
+  ):
   def registerHandler(
       handler: CommandHandler[?, Response] | QueryHandler[?, Response]
-  )(using logger: Logger): GenericIncomingHTTPMessageDispatcher =
+  ): GenericIncomingHTTPMessageDispatcher =
     handler match {
       case qh: QueryHandler[?, Response] =>
         new GenericIncomingHTTPMessageDispatcher(
