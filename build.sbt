@@ -18,3 +18,6 @@ ThisBuild / versionScheme := Some("early-semver")
 
 githubOwner := "dc-ag"
 githubRepository := "zhttp-cqrs"
+
+publishConfiguration := publishConfiguration.value.withOverwrite(true)
+publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
