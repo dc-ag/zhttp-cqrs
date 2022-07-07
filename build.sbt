@@ -2,7 +2,7 @@ name := "zhttp_cqrs"
 
 organization := "ag.dc"
 
-version := "0.9.1"
+version := "0.10.1"
 
 scalaVersion := "3.1.2"
 
