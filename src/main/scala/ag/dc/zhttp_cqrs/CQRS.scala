@@ -18,7 +18,8 @@ import zio.Chunk
 import zio.Ref
 import zio.ZIO
 import zio.json.*
-
+import zio.logging._
+import scala.collection.mutable.ListBuffer
 
 type AggregateIdType = UUID | Int
 
@@ -384,63 +385,23 @@ trait BlockingEventHandler
 trait CPUHeavyEventHandler
 
 trait EventHandler[E <: Event[?, ?]]:
-  // List of type/class-names of events that this handler can handle
-  val handles: List[Class[E]]
+  val registrationFn: PartialFunction[Event[?, ?], ZIO[Any, Throwable, Any]]
   def handle(event: E): ZIO[Any, Throwable, Any]
 
-trait DomainEventHandler[C <: Aggregate, E <: DomainEvent[?, ?, C]]:
-  val handles: List[Class[E]]
-  type TargetAggregate = C
-  def handle(event: DomainEvent[?, ?, C]): ZIO[Any, Throwable, Any]
+trait DomainEventHandler[E <: DomainEvent[?, ?, ?]]:
+  val registrationFn: PartialFunction[DomainEvent[?, ?, ?], ZIO[Any, Throwable, Any]]
+  def handle(event: E): ZIO[Any, Throwable, Any]
 
 
 object SynchronousDomainEventHook:
-  val registeredHandlers: scala.collection.mutable.Map[String, List[DomainEventHandler[?, ?]]] = 
-    scala.collection.mutable.Map()
-  def registerHandler(handler: DomainEventHandler[?, ?]): Unit = {
-    handler.handles.foreach(evtClass => {
-      val existingHandlers = registeredHandlers.getOrElse(evtClass.getName, List())
-      val appendedHandlers = existingHandlers.appended(handler)
-      registeredHandlers(evtClass.getName) = appendedHandlers
-    })
-  }
-  def raiseEvent[A <: Aggregate](event: DomainEvent[?, ?, A]): ZIO[Any, Throwable, Any] = {
-    registeredHandlers get event.getClass.getName match {
-      case Some(list: List[DomainEventHandler[A, event.type]]) => 
-        list
-          .map(h => h.handle(event.asInstanceOf[DomainEvent[?, ?, h.TargetAggregate]]))
-          .reduce(_ *> _)
-      case _ => ZIO.succeed(())
-    }
-  }
-
-object AsynchronousDomainEventHook:
-  val registeredHandlers: scala.collection.mutable.Map[String, List[DomainEventHandler[?, ?]]] = 
-    scala.collection.mutable.Map()
-  def registerHandler(handler: DomainEventHandler[?, ?]): Unit = {
-    handler.handles.foreach(evtClass => {
-      val existingHandlers = registeredHandlers.getOrElse(evtClass.getName, List())
-      val appendedHandlers = existingHandlers.appended(handler)
-      registeredHandlers(evtClass.getName) = appendedHandlers
-    })
-  }
-  // Call handle.handle concurrently for each event
-  def raiseEvent[A <: Aggregate](event: DomainEvent[?, ?, A]): ZIO[Any, Throwable, Any] = {
-    // @TODO: Improve by changing map keys to type Class[?], filtering keys by filterKeys(k => k.isAssignableFrom(event.getClass))
-    registeredHandlers get event.getClass.getName match {
-      case Some(list: List[DomainEventHandler[A, event.type]])  => 
-        list
-          .map(handler => 
-            if (handler.isInstanceOf[BlockingEventHandler] || handler.isInstanceOf[CPUHeavyEventHandler])
-            then 
-              ZIO.attemptBlocking { handler.handle(event.asInstanceOf[DomainEvent[?, ?, handler.TargetAggregate]]) }              
-            else 
-              handler.handle(event.asInstanceOf[DomainEvent[?, ?, handler.TargetAggregate]])
-          )
-          .map(_.fork)
-          // @TODO: Do we need to join fibres? We need not await their completion here
-          //.map(_.join)
-          .reduce(_ *> _)
-      case _ => ZIO.succeed(())
-    }
+  val handlerPartials: ListBuffer[PartialFunction[DomainEvent[?, ?, ?], ZIO[Any, Throwable, Any]]] = 
+    new ListBuffer()
+  def registerHandler(registrationFn: PartialFunction[DomainEvent[?, ?, ?], ZIO[Any, Throwable, Any]]): Unit = 
+    handlerPartials += registrationFn
+  def raiseEvent(event: DomainEvent[?, ?, ?]): ZIO[Any, Throwable, Any] = {
+    handlerPartials.flatMap(_.lift(event)).headOption.getOrElse(
+      ZIO.succeed(
+        println("No matching handler found")
+      )
+    )
   }
